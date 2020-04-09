@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="per.xiaozhi.mapper.StudentMapper">
+    <!-- 验证登录信息是否正确 -->
+    <select id="login" parameterType="loginForm" resultType="student">
+        SELECT id,
+               sno,
+               name,
+               gender,
+               password,
+               portraitPath,
+               email,
+               telephone,
+               address,
+               introduction,
+               clazzName
+        FROM ssm_student.tb_student
+        WHERE name = #{name}
+          AND password = #{password}
+    </select>
+
+    <!-- 根据班级与学生名获取指定/全部学生信息列表 -->
+    <select id="selectList" parameterType="student" resultType="student">
+        SELECT id, sno, name, gender, password, portraitPath, email, telephone, address, introduction, clazzName
+        FROM ssm_student.tb_student
+        <where>
+            <if test="clazzName!=null and clazzName!=''">
+                AND clazzName = #{clazzName}
+            </if>
+            <if test="name!=null and name!=''">
+                AND name LIKE concat(concat('%',#{name}),'%')
+            </if>
+        </where>
+    </select>
+
+
+    <!-- 添加学生信息 -->
+    <insert id="insert" parameterType="student">
+        INSERT INTO ssm_student.tb_student(sno, name, gender, password, portraitPath, email, telephone, address, introduction,clazzName)
+        VALUES (#{sno}, #{name}, #{gender}, #{password}, #{portraitPath}, #{email}, #{telephone}, #{address},#{introduction}, #{clazzName})
+    </insert>
+
+    <!-- 根据id修改指定学生信息 -->
+    <update id="update" parameterType="student">
+        UPDATE ssm_student.tb_student
+        <set>
+            <if test="sno!=null and sno!=''">sno=#{sno},</if>
+            <if test="name!=null and name!=''">name=#{name},</if>
+            <if test="gender!=null and gender!=''">gender=#{gender},</if>
+            <if test="password!=null and password!=''">password=#{password},</if>
+            <if test="email!=null and email!=''">email=#{email},</if>
+            <if test="telephone!=null and telephone!=''">telephone=#{telephone},</if>
+            <if test="address!=null and address!=''">address=#{address},</if>
+            <if test="introduction!=null and introduction!=''">introduction=#{introduction},</if>
+            <if test="portraitPath!=null and portraitPath!=''">portraitPath=#{portraitPath},</if>
+            <if test="clazzName!=null and clazzName!=''">clazzName=#{clazzName},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 根据id修改指定学生密码 -->
+    <update id="updatePassword" parameterType="student">
+        UPDATE ssm_student.tb_student
+        SET password=#{password}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 根据id批量删除指定学生信息 -->
+    <delete id="deleteById">
+        DELETE FROM ssm_student.tb_student WHERE id=#{id}
+    </delete>
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 为sql映射文件中的输入/输出参数设置类型别名 -->
+    <typeAliases>
+        <typeAlias type="per.xiaozhi.pojo.Admin" alias="admin"/>
+        <typeAlias type="per.xiaozhi.pojo.Clazz" alias="clazz"/>
+        <typeAlias type="per.xiaozhi.pojo.Grade" alias="grade"/>
+        <typeAlias type="per.xiaozhi.pojo.Student" alias="student"/>
+        <typeAlias type="per.xiaozhi.pojo.Teacher" alias="teacher"/>
+        <typeAlias type="per.xiaozhi.pojo.LoginForm" alias="loginForm"/>
+    </typeAliases>
+</configuration>

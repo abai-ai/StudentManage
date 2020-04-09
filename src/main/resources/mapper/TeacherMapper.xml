@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="per.xiaozhi.mapper.TeacherMapper">
+
+    <!-- 验证登录信息是否正确 -->
+    <select id="login" parameterType="loginForm" resultType="teacher">
+        SELECT id,
+               tno,
+               name,
+               gender,
+               password,
+               email,
+               telephone,
+               address,
+               portraitPath,
+               clazzName
+        FROM ssm_student.tb_teacher
+        WHERE name = #{name}
+          AND password = #{password}
+    </select>
+
+    <!-- 根据教师与班级名查询指定/全部教师信息列表 -->
+    <select id="selectList" parameterType="teacher" resultType="teacher">
+        SELECT id, tno, name, gender, password, email, telephone, address, portraitPath, clazzName
+        FROM ssm_student.tb_teacher
+        <where>
+            <if test="clazzName!=null and clazzName!=''">
+                AND clazzName = #{clazzName}
+            </if>
+            <if test="name!=null and name!=''">
+                AND name LIKE concat(concat('%',#{name}),'%')
+            </if>
+        </where>
+    </select>
+
+    <!-- 根据工号查询指定教师信息 -->
+    <select id="findByTno" resultType="teacher" parameterType="teacher">
+        SELECT id,
+               tno,
+               name,
+               gender,
+               password,
+               email,
+               telephone,
+               address,
+               portraitPath,
+               clazzName
+        FROM ssm_student.tb_teacher
+        WHERE tno = #{tno}
+    </select>
+
+    <!-- 添加教师信息 -->
+    <insert id="insert" parameterType="teacher">
+        INSERT INTO tb_teacher(tno, name, gender, password, email, telephone, address, portraitPath, clazzName)
+        VALUES (#{tno}, #{name}, #{gender}, #{password}, #{email}, #{telephone}, #{address}, #{portraitPath},
+                #{clazzName})
+    </insert>
+
+    <!-- 根据id修改指定教师信息 -->
+    <update id="update" parameterType="teacher">
+        UPDATE ssm_student.tb_teacher
+        <set>
+            <if test="name!=null and name!=''">name=#{name},</if>
+            <if test="gender!=null and gender!=''">gender=#{gender},</if>
+            <if test="password!=null and password!=''">password=#{password},</if>
+            <if test="email!=null and email!=''">email=#{email},</if>
+            <if test="telephone!=null and telephone!=''">telephone=#{telephone},</if>
+            <if test="address!=null and address!=''">address=#{address},</if>
+            <if test="portraitPath!=null and portraitPath!=''">portraitPath=#{portraitPath},</if>
+            <if test="clazzName!=null and clazzName!=''">clazzName=#{clazzName},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 根据id修改指定教师密码 -->
+    <update id="updatePassword" parameterType="teacher">
+        UPDATE ssm_student.tb_teacher
+        SET password=#{password}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 根据id批量删除指定教师信息 -->
+    <delete id="deleteById">
+        DELETE FROM ssm_student.tb_teacher WHERE id=#{id}
+    </delete>
+</mapper>
