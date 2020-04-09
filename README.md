@@ -40,6 +40,8 @@
  ![image](https://github.com/xiaozhi-git/StudentManage/blob/master/ReadMeImages/noinput_email.png)
  
  教师：
+ 
+ 
   --列表
   ![image](https://github.com/xiaozhi-git/StudentManage/blob/master/ReadMeImages/teacherList.png)
   
@@ -53,6 +55,8 @@
   ![image](https://github.com/xiaozhi-git/StudentManage/blob/master/ReadMeImages/teacherUpdate.png)
   
 学生：
+
+
  --列表
  ![image](https://github.com/xiaozhi-git/StudentManage/blob/master/ReadMeImages/studentList.png)
  
