@@ -27,8 +27,9 @@
 ![image](https://github.com/xiaozhi-git/StudentManage/blob/master/ReadMeImages/search.png)
  
  --删除
- ![image](https://github.com/xiaozhi-git/StudentManage/blob/master/ReadMeImages/delete.png)
-  
+ ![image](https://github.com/xiaozhi-git/StudentManage/blob/master/ReadMeImages/delete.png) 
+ 
+ 
  --更新
  ![image](https://github.com/xiaozhi-git/StudentManage/blob/master/ReadMeImages/update.png)
 
@@ -57,12 +58,11 @@
  
  --新增
  ![image](https://github.com/xiaozhi-git/StudentManage/blob/master/ReadMeImages/addStu.png)
- 
- --删除
- ![image](https://github.com/xiaozhi-git/StudentManage/blob/master/ReadMeImages/DelStudent.png)
- 
+  
  --修改
  ![image](https://github.com/xiaozhi-git/StudentManage/blob/master/ReadMeImages/editStudent.png)
+ --删除
+ ![image](https://github.com/xiaozhi-git/StudentManage/blob/master/ReadMeImages/Delstudent.png)
  
  年级列表：
  ![image](https://github.com/xiaozhi-git/StudentManage/blob/master/ReadMeImages/gradeList.png)
